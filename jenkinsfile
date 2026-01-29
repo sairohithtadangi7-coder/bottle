@@ -2,19 +2,24 @@ pipeline{
     agent any
 
     stages{
-        stage('checkout code'){
+        stage('git'){
             steps{
-                git url:https://github.com/sairohithtadangi7-coder/bottle.git
+                git url: 'https://github.com/sairohithtadangi7-coder/real-project.git'
             }
         }
-        stage('build'){
+        stage('clean') {
             steps{
                 sh 'mvn clean package'
             }
-        }  
-        stage('test'){
+        }
+        stage('test') {
             steps{
                 sh 'mvn test'
+            }
+        }
+        stage('cleanwk'){
+            steps{
+                cleanws()
             }
         }
     }
